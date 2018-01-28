@@ -1,0 +1,24 @@
+#!/bin/bash
+
+access_log=/var/log/httpd/access_log
+error_log=/var/log/httpd/error_log
+
+access_logsize=`du -k "$access_log" | cut -f1`
+error_logsize=`du -k "$error_log" | cut -f1`
+
+if [ $access_logsize -ge 250000 ]
+then
+#zip -r /var/log/httpd/access_log$(date +%d%b%T).zip /var/log/httpd/access_log
+echo "Greater"
+else
+echo "Smaller"
+fi
+
+if [ $error_logsize -ge 150000 ]
+then
+#zip -r /var/log/httpd/access_log$(date +%d%b%T).zip /var/log/httpd/access_log
+echo "Greater"
+else
+echo "Smaller"
+fi
+~ 

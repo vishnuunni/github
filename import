@@ -1,0 +1,16 @@
+#!/bin/bash
+echo "---------------------------"
+echo -n "Enter the file you want to import: "
+read file
+echo -n "Enter the server ip: "
+read ip
+scp -i /home/vishnu/c2s_sshkey c2s@$ip:$file .
+
+status=$(echo "$?")
+ if [ $status != 0 ]; 
+ then
+    echo "Error with transferring: $file"
+ else
+    echo "Transfer Completed ;)"
+ fi
+exit $status

@@ -1,0 +1,25 @@
+#!/bin/bash
+echo "---------------------------"
+echo -n "Enter the file you want to export: "
+read file
+
+ if [ -f $file ]
+ then
+    echo "File found"
+ else
+    echo "File not present"
+    exit
+ fi
+
+echo -n "Enter the server ip: "
+read ip
+scp -i /home/vishnu/c2s_sshkey $file c2s@$ip:
+
+status=$(echo "$?")
+ if [ $status != 0 ]; 
+ then
+    echo "Error with transferring: $file"
+ else
+    echo "Transferring Completed ;)"
+ fi
+exit $status

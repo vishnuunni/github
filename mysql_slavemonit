@@ -1,0 +1,14 @@
+#!/bin/bash
+MYSQL=`mysql -u slavemonit -e "SHOW SLAVE STATUS\G"`
+IO=`echo "$MYSQL" | grep 'Slave_IO_Running:' | awk '{print $2}'`
+SQL=`echo "$MYSQL" | grep 'Slave_SQL_Running:' | awk '{print $2}'`
+LAG=`echo "$MYSQL" | grep 'Seconds_Behind_Master:' | awk '{print $2}'`
+check=300
+if [ "Yes" == "$IO" ] && [ "Yes" == "$SQL" ] && [ "$LAG" -le "$check" ]; then
+        exit 0
+else
+echo "Slave_IO_Running:=$IO"
+echo "Slave_SQL_Running:=$SQL"
+echo "Seconds_Behind_Master:=$LAG"
+        exit 1
+fi
