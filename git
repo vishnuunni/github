@@ -4,3 +4,5 @@ git status
 git add .
 git commit -m "$date"
 git push origin master
+sleep 1
+git log | head
