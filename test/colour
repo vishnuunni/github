@@ -1,0 +1,5 @@
+#!/bin/bash
+green=`tput setaf 2`
+textreset=$(tput sgr0)
+
+echo " ${green}test ${textreset} hai"

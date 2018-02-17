@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "hai $1" 
+echo "hai $1 welcome to $2" 
