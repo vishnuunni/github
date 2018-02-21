@@ -1,4 +1,10 @@
 #!/bin/bash
+echo "Starting all dockers..."
+sh /opt/c2s/scripts/restart-rpm.sh
+sh /opt/c2s/scripts/restart-nhhs_payment.sh
+sh /opt/c2s/scripts/restart-nhhs_rpm.sh
+sh /opt/c2s/scripts/restart-api.sh
+echo "All dockers running..."
 echo "Killing all screens..."
 killall screen
 
@@ -80,20 +86,11 @@ if [ -d "/home/c2s/screen_names" ]
 				      #screen_nhhs_rpm=`/opt/c2s/scripts/screen_name/nhhs_rpm_sn`
 				      #screen -r "$screen_nhhs_rpm" -X stuff $'sh /opt/rpm/start.sh\n'
 
-				      cd /opt/c2s/scripts
 				      echo "Please holdon... Completing the screens..."
 				      sleep 2
 				      echo "All screens running..."
 				      screen -ls
-				      sleep 2
-
-				      echo "Starting all dockers..."
-				      sh /opt/c2s/scripts/restart-rpm.sh
-				      sh /opt/c2s/scripts/restart-nhhs_payment.sh
-				      sh /opt/c2s/scripts/restart-nhhs_rpm.sh
-				      sh /opt/c2s/scripts/restart-api.sh
-				      echo "All dockers running..."
 			      docker ps -a
-			      screen -ls
 			      #monit summary
-			      echo "Done"
+			      echo "All Done..."
+			      echo ""

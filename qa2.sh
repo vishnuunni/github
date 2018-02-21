@@ -1,8 +1,16 @@
 #!/bin/bash
+
+echo "Starting all dockers"
+sh /opt/c2s/scripts/restart-nhhs-feedback.sh
+sh /opt/c2s/scripts/restart-api.sh
+docker ps -a
+echo "All docker running"
+
 echo "Killing all screens..."
 killall screen
+echo "Starting all screens..."
 
-echo "Checking Directory..."
+echo "Checking for Directory..."
  if [ -d "/home/c2s/screen_names" ] 
 	   then
 		   echo "Directory exists"
@@ -12,8 +20,6 @@ echo "Checking Directory..."
 			     echo "Directory created"
 			      fi
 
-			      echo "Starting nhhs_event_log"
-			      sh /opt/app/event_log/nhhs_event_log/start.sh
 
 			      echo "Starting nhhs_event_log..."
 			      screen -dmS nhhs_event_log
@@ -23,13 +29,13 @@ echo "Checking Directory..."
 			      sleep 2
 			      echo "nhhs_event_log running on screen $screen_nhhs_event_log"
 
-			      echo "Starting nhhs_api"
-			      screen -dmS nhhs_api
-			      screen -ls | grep nhhs_api | awk '{print $1}' | head -1 > /home/c2s/screen_names/nhhs_api_sn
-			      screen_nhhs_api=`cat /home/c2s/screen_names/nhhs_api_sn`
-			      screen -r "$screen_nhhs_api" -X stuff $'sh /opt/app/nhhs_api/start.sh\n'
-			      sleep 2
-			      echo "nhhs_api running on screen $screen_nhhs_api"
+	#		      echo "Starting nhhs_api"
+	#		      screen -dmS nhhs_api
+  		#	screen -ls | grep nhhs_api | awk '{print $1}' | head -1 > /home/c2s/screen_names/nhhs_api_sn
+		#	      screen_nhhs_api=`cat /home/c2s/screen_names/nhhs_api_sn`
+	#		      screen -r "$screen_nhhs_api" -X stuff $'sh /opt/app/nhhs_api/start.sh\n'
+#			      sleep 2
+#			      echo "nhhs_api running on screen $screen_nhhs_api"
 
 			      echo "Starting Kafka..."
 			      cd /opt/app/kafka
@@ -39,7 +45,7 @@ echo "Checking Directory..."
 			      PID=`cat /var/run/kafka.pid`
 			      echo "Kafka Started with pid $PID"
 			      sleep 15
-
+	
 			      cd /opt/c2s/scripts
 			      echo "Starting nhhs_event_bus"
 			      screen -dmS nhhs_event_bus
@@ -71,12 +77,6 @@ echo "Checking Directory..."
 			      echo "All screens running..."
 			      screen -ls
 
-			      #Docker_start
-			      echo "Starting Docker"
-			      sh /opt/c2s/scripts/restart-nhhs-feedback.sh
-			      echo "All dockers running..."
-			      sleep 2
-
 		      docker ps -a
-		      screen -ls
-		      echo "Done"
+		      echo "All Done..."
+		      echo ""
