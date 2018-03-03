@@ -1,0 +1,10 @@
+-----------Masterlog onWed Feb 21 08:32:29 IST 2018-----------
+Starting nhhs_event_log...
+./screen.sh: line 8: /home/c2s/screen_names/nhhs_event_log_sn: No such file or directory
+cat: /home/c2s/screen_names/nhhs_event_log_sn: No such file or directory
+nhhs_event_log running on screen 
+-----------Masterlog onWed Feb 21 08:33:09 IST 2018-----------
+Starting nhhs_event_log...
+./screen.sh: line 8: /home/c2s/screen_names/nhhs_event_log_sn: No such file or directory
+cat: /home/c2s/screen_names/nhhs_event_log_sn: No such file or directory
+nhhs_event_log running on screen 

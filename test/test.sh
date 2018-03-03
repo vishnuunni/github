@@ -1,3 +1,5 @@
 #!/bin/bash
-touch /home/vishnu/Desktop/Script_Hub/test/file1
-#echo "created"
+exec &> logfile.txt
+touch /home/vishnu/Desktop/Script_Hub/test/script_log
+echo "created"
+
