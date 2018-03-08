@@ -1,0 +1,9 @@
+#!/bin/bash
+echo -n "Enter cron: "
+read crone
+cd /home/vishnu/devops_ansible
+ansible-playbook -i test_host cron.yml --extra-vars "cron=$crone" > "/home/vishnu/Desktop/Script_Hub/test/cronlog.log"
+path=`cat "/home/vishnu/devops_ansible/sparrow.log" | grep path | awk '{print $7}'` | grep -v "
+echo "$path"
+scp -i /home/vishnu/c2s_sshkey c2s@13.229.239.74:$path /home/vishnu
+echo "Done"
