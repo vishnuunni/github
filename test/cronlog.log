@@ -8,8 +8,9 @@ TASK [debug] *******************************************************************
 ok: [13.229.239.74] => {
     "shell_result.stdout_lines": [
         "", 
-        "00 6 * * * curl \"http://bflytebo.trendin.com/redisconnect/deletejunksessions\" >> /cron-log/deletejunksessions.log", 
-        "Log is in this path :  /cron-log/deletejunksessions.log"
+        "10 03 * * * curl \"https://www.pantaloons.com/crons/sitemapxmlcron\" >> /cron-log/ptsitemapxmlcron.log", 
+        "", 
+        "Log is in this path :  /cron-log/ptsitemapxmlcron.log"
     ]
 }
 
