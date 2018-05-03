@@ -1,0 +1,8 @@
+---------------------------
+Enter the file you want to export: ./send: line 4: read: read error: 0: Bad file descriptor
+File found
+Enter the server ip: ./send: line 15: read: read error: 0: Bad file descriptor
+usage: scp [-12346BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
+           [-l limit] [-o ssh_option] [-P port] [-S program]
+           [[user@]host1:]file1 ... [[user@]host2:]file2
+Error with transferring: 
